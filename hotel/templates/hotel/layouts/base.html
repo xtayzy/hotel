@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Title {% endblock %}</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background-color:  #FF7F50;
+        }
+
+        header {
+            display: flex;
+            width: 100%;
+            background-color: #40E0D0;
+            justify-content: space-around;
+        }
+
+        header div {
+            padding: 20px;
+        }
+
+        header a {
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+        }
+
+        header a:hover {
+            border-bottom: 1px solid white;
+        }
+
+        .rooms {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            background-color:  #FF7F50;
+            width: 100%;
+            padding: 20px;
+            height: 100%;
+        }
+
+        .room {
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            gap: 10px;
+            font-size: 20px;
+            background-color:  #FFFFFF;
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    {% include 'hotel/includes/header.html' %}
+</header>
+
+{% block content %}
+
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% extends 'hotel/layouts/base.html' %}
+
+
+{% block content %}
+    <div class="room">
+        <img style="width: 28.5vw; height: 35vh" src="{{ room.photo.url }}" alt="">
+        <div>
+            Номер: {{ room.number }}
+        </div>
+        <div>
+            Класс: {{ room.type.name }}
+        </div>
+        <div>
+            Цена за ночь: {{ room.price }}
+        </div>
+        <div>
+            Описание: {{ room.description }}
+        </div>
+        <div>
+            <a href="{% url 'room_res' id=room.id %}">Забронировать</a>
+        </div>
+    </div>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button>Забронировать</button>
+    </form>
+    <div>
+        <h1>Брони на эту комнату</h1>
+        {% for res in reservations %}
+            <div>{{ res.arrival_date }} до {{ res.departure_date }}</div>
+        {% endfor %}
+    {% if not reservations %}
+    	<h3>на эту комнату нету броней</h3>
+    {% endif %}
+    </div>
+{% endblock %}

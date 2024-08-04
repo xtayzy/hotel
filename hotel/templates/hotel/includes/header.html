@@ -1,0 +1,14 @@
+<header>
+    <div>
+        <a href="{% url 'index' %}">Главная</a>
+    </div>
+    <div>
+        <a href="{% url 'profile' %}">Пофиль</a>
+    </div>
+    {% if request.user.is_superuser %}
+        <div>
+            <a href="{% url 'edit' %}">Ред. Номеров</a>
+        </div>
+    {% endif %}
+</header>
+

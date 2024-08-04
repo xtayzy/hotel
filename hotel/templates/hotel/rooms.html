@@ -1,0 +1,27 @@
+{% extends 'hotel/layouts/base.html' %}
+
+
+{% block content %}
+    <div class="rooms">
+        {% for room in rooms %}
+            <div class="room">
+                <img style="width: 150px; height: 120px" src="{{ room.photo.url }}" alt="">
+                <div>
+                    Номер: {{ room.number }}
+                </div>
+                <div>
+                    Класс: {{ room.type.name }}
+                </div>
+                <div>
+                    Цена за ночь: {{ room.price }}
+                </div>
+                <div>
+                    Описание: {{ room.description }}
+                </div>
+                <div>
+                    <a href="{% url 'room_res' id=room.id %}">Забронировать</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

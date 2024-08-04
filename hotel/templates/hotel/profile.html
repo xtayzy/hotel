@@ -1,0 +1,24 @@
+{% extends 'hotel/layouts/base.html' %}
+
+{% block content %}
+    <a href="{% url 'logout_page' %}">выйти</a>
+    <h2>Ваши брони</h2>
+    {% if not reservations %}
+        <h1>У вас пока нету броней</h1>
+    {% endif %}
+    <div style="padding: 20px; display: flex; flex-direction: column; gap: 10px;">
+        {% for reservation in reservations %}
+            <div>
+                <div>
+                    <img style="width: 100px; height: 60px" src="{{ reservation.room.photo.url }}" alt="">
+                </div>
+                <div>
+                    {{ reservation.arrival_date }} - {{ reservation.arrival_date }}
+                </div>
+                <div>
+                    <a href="{% url 'delete_res' pk=reservation.pk %}">отменить</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
